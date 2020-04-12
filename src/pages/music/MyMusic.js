@@ -14,7 +14,7 @@ export default class MyMusicPage extends React.Component {
             <div className="mx-4 my-4 w-1/6 flex flex-col items-center leading-tight" key={i}>
               <img className="shadow-lg rounded-lg" alt="Album cover" src="https://i.pinimg.com/originals/d9/0d/59/d90d59e74df03ae53756476e990fd425.jpg" />
               <h2 className="mt-2 text-gray-100 font-bold text-lg">Song Name</h2>
-              <h3 className="text-gray-100 text-sm">Some Amazing Artist</h3>
+              <h3 className="text-gray-100 text-xs">Some Amazing Artist</h3>
             </div>
 
           ))}
