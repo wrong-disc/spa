@@ -8,6 +8,7 @@ import UserCard from '../components/UserCard';
 import MyMusic from '../pages/music/MyMusic';
 import Explore from '../pages/music/Explore';
 import About from '../pages/about/About';
+import Settings from '../pages/settings/Settings';
 
 export default class RouterComponent extends React.Component {
   render () {
@@ -29,6 +30,9 @@ export default class RouterComponent extends React.Component {
                       </Route>
                       <Route path="/about">
                           <About />
+                      </Route>
+                      <Route path="/settings">
+                          <Settings />
                       </Route>
                   </Switch>
 

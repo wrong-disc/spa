@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 
 export default class UserCardComponent extends React.Component {
 
@@ -19,12 +20,12 @@ export default class UserCardComponent extends React.Component {
 
                 <div className="mt-4 mr-4 flex flex-col items-end">
                     <button onClick={() => { this.setState((state) => ({ open: !state.open })) }} className="z-50 bg-gray-900 text-gray-200 hover:bg-gray-800 rounded-full shadow-lg flex items-center focus:outline-none">
-                        <img className="h-10 w-10 rounded-full object-fit" src="https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg"/>
+                        <img className="h-10 w-10 rounded-full object-fit" alt="User avatar" src="https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg"/>
                         <div className="ml-2 mr-3">Johnny GoldFish</div>
                     </button>
                     { this.state.open &&
                         <div className="z-50 mt-2 p-4 w-64 bg-gray-900 text-gray-300 text-lg rounded shadow-lg flex flex-col">
-                            <button className="py-2 px-2 w-full text-left hover:bg-gray-800 focus:outline-none rounded">Settings</button>
+                            <NavLink to="/settings" onClick={() => { this.setState({ open: false }) }} className="py-2 px-2 w-full text-left hover:bg-gray-800 focus:outline-none rounded">Settings</NavLink>
                             <button className="py-2 px-2 border-gray-800 border-t w-full text-left hover:bg-gray-800 focus:outline-none rounded">Logout</button>
                         </div>
                     }
