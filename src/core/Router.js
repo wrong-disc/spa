@@ -14,12 +14,12 @@ export default class RouterComponent extends React.Component {
   render () {
     return (
       <Router>
-            <div className="bg-swoosh text-gray-900 antialiased font-sans w-screen h-screen flex flex-col">
+            <div className="bg-swoosh text-gray-900 antialiased font-sans w-full h-screen flex flex-col overflow-hidden">
 
-              <div className="flex-1 flex">
+              <div className="flex flex-1 overflow-hidden">
                 <Sidebar/>
 
-                <main className="w-full h-full">
+                <main className="flex-1 w-full overflow-y-auto">
 
                   <Switch>
                       <Route exact path="/">
@@ -41,7 +41,7 @@ export default class RouterComponent extends React.Component {
 
               <Playbar/>
 
-              <div className="fixed top-0 right-0">
+              <div className="fixed top-0 right-0 mt-6 mr-6">
                 <UserCard />
               </div>
 

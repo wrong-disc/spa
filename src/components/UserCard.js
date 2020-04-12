@@ -18,7 +18,7 @@ export default class UserCardComponent extends React.Component {
                     <div onClick={() => { this.setState({ open: false }) }} className="z-40 fixed top-0 left-0 w-screen h-screen bg-black opacity-50"></div>
                 }
 
-                <div className="mt-4 mr-4 flex flex-col items-end">
+                <div className="flex flex-col items-end">
                     <button onClick={() => { this.setState((state) => ({ open: !state.open })) }} className="z-50 bg-gray-900 text-gray-200 hover:bg-gray-800 rounded-full shadow-lg flex items-center focus:outline-none">
                         <img className="h-10 w-10 rounded-full object-fit" alt="User avatar" src="https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg"/>
                         <div className="ml-2 mr-3">Johnny GoldFish</div>
