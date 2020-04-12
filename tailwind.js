@@ -127,7 +127,7 @@ module.exports = {
       },
     },
     gradients: theme => ({
-      'swoosh': ['to bottom', '#7B94D1', '#4E5E85'],
+      'swoosh': ['to bottom', theme('colors.indigo.400'), theme('colors.blue.300')],
     }),
     spacing: {
       px: '1px',
