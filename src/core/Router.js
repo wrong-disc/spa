@@ -37,6 +37,10 @@ export default class RouterComponent extends React.Component {
 
               <Playbar/>
 
+              <div className="fixed top-0 right-0">
+                <UserCard />
+              </div>
+
             </div>
         </Router>
     );
