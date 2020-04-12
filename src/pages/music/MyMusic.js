@@ -20,7 +20,7 @@ export default class MyMusicPage extends React.Component {
           ))}
 
           {/* Fake elements to pad out flex-grid when <5 elements in grid */}
-          {[...Array(4)].map((e, i) => <div className="mx-4 my-4 w-1/6"/>)}
+          {[...Array(4)].map((e, i) => <div className="mx-4 my-4 w-1/6" key={i} />)}
 
         </div>
 
