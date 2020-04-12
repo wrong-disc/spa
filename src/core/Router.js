@@ -4,7 +4,8 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import Playbar from '../components/Playbar';
 
-import Home from '../pages/home/Home';
+import MyMusic from '../pages/music/MyMusic';
+import Explore from '../pages/music/Explore';
 import About from '../pages/about/About';
 
 export default class RouterComponent extends React.Component {
@@ -20,7 +21,10 @@ export default class RouterComponent extends React.Component {
 
                   <Switch>
                       <Route exact path="/">
-                          <Home />
+                          <MyMusic />
+                      </Route>
+                      <Route path="/explore">
+                          <Explore />
                       </Route>
                       <Route path="/about">
                           <About />
