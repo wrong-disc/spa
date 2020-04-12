@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 import Sidebar from '../components/Sidebar';
 import Playbar from '../components/Playbar';
+import UserCard from '../components/UserCard';
 
 import MyMusic from '../pages/music/MyMusic';
 import Explore from '../pages/music/Explore';
@@ -12,7 +13,7 @@ export default class RouterComponent extends React.Component {
   render () {
     return (
       <Router>
-            <div className="bg-gray-200 text-gray-900 antialiased font-sans w-screen h-screen flex flex-col">
+            <div className="bg-swoosh text-gray-900 antialiased font-sans w-screen h-screen flex flex-col">
 
               <div className="flex-1 flex">
                 <Sidebar/>

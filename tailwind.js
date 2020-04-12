@@ -126,6 +126,9 @@ module.exports = {
         900: '#702459',
       },
     },
+    gradients: theme => ({
+      'swoosh': ['to bottom', '#7B94D1', '#4E5E85'],
+    }),
     spacing: {
       px: '1px',
       '0': '0',
@@ -673,6 +676,7 @@ module.exports = {
     wordBreak: ['responsive'],
     zIndex: ['responsive'],
     gap: ['responsive'],
+    gradients: ['responsive', 'hover'],
     gridAutoFlow: ['responsive'],
     gridTemplateColumns: ['responsive'],
     gridColumn: ['responsive'],
@@ -693,5 +697,7 @@ module.exports = {
     transitionDuration: ['responsive'],
   },
   corePlugins: {},
-  plugins: [],
+  plugins: [
+    require('tailwindcss-plugins/gradients'),
+  ],
 }
