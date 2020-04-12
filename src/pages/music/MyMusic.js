@@ -1,7 +1,7 @@
 import React from 'react';
 export default class MyMusicPage extends React.Component {
 
-  render () {
+  render() {
     return (
       <div className="w-full h-full flex flex-col items-start px-4 py-4">
 
