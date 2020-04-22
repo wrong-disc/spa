@@ -1,5 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
+import AuthService from '../services/AuthService';
 
 export default class UserCardComponent extends React.Component {
 
@@ -8,6 +9,13 @@ export default class UserCardComponent extends React.Component {
         this.state = {
             open: false
         };
+    }
+
+    logout = () => {
+        AuthService.logout()
+        .then(() => {
+            this.props.updateMe();
+        });
     }
 
     render() {
@@ -26,7 +34,7 @@ export default class UserCardComponent extends React.Component {
                     { this.state.open &&
                         <div className="z-50 mt-2 p-4 w-64 bg-gray-900 text-gray-300 text-lg rounded shadow-lg flex flex-col">
                             <NavLink to="/settings" onClick={() => { this.setState({ open: false }) }} className="py-2 px-2 w-full text-left hover:bg-gray-800 focus:outline-none rounded">Settings</NavLink>
-                            <button className="py-2 px-2 border-gray-800 border-t w-full text-left hover:bg-gray-800 focus:outline-none rounded">Logout</button>
+                            <button onClick={this.logout} className="py-2 px-2 border-gray-800 border-t w-full text-left hover:bg-gray-800 focus:outline-none rounded">Logout</button>
                         </div>
                     }
                 </div>
