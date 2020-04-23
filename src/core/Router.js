@@ -27,7 +27,7 @@ export default class RouterComponent extends React.Component {
 
   componentDidMount() {
     AuthService.updateAuthState()
-    .then(this.updateMe());
+    .then(this.updateMe);
   }
 
   updateMe = () => {

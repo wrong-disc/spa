@@ -13,9 +13,12 @@ export default class RegisterPage extends React.Component {
     }
 
     register = () => {
-        AuthService.register()
+        AuthService.register(prompt('name'), prompt('email'), prompt('password'))
         .then(() => this.setState({ redirect: true }))
-        .catch(() => this.setState({ redirect: false }))
+        .catch(err => {
+            this.setState({ redirect: false });
+            alert(err.message);
+        })
         .finally(() => this.props.updateMe());
     }
 

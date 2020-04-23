@@ -1,14 +1,30 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import AuthService from '../services/AuthService';
+import UserService from '../services/UserService';
+import md5 from 'md5';
 
 export default class UserCardComponent extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            open: false
+            open: false,
+            user: null,
+            userLoaded: false
         };
+    }
+
+    componentDidMount() {
+        UserService.get()
+        .then(res => {
+            res.md5 = md5(res.email);
+            this.setState({
+                user: res,
+                userLoaded: true,
+            });
+        })
+        .catch(err => console.log('Error getting authenticated user: ' + err));
     }
 
     logout = () => {
@@ -28,8 +44,8 @@ export default class UserCardComponent extends React.Component {
 
                 <div className="flex flex-col items-end">
                     <button onClick={() => { this.setState((state) => ({ open: !state.open })) }} className="z-50 bg-gray-900 text-gray-200 hover:bg-gray-800 rounded-full shadow-lg flex items-center focus:outline-none">
-                        <img className="h-10 w-10 rounded-full object-fit" alt="User avatar" src="https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg"/>
-                        <div className="ml-2 mr-3">Johnny GoldFish</div>
+                        <img className="h-10 w-10 rounded-full object-fit" alt="User avatar" src={ this.state.userLoaded ? 'https://www.gravatar.com/avatar/' + this.state.user.md5 + '?d=identicon' : 'https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg' }/>
+                        <div className="ml-2 mr-3">{ this.state.userLoaded ? this.state.user.name : 'Loading...' }</div>
                     </button>
                     { this.state.open &&
                         <div className="z-50 mt-2 p-4 w-64 bg-gray-900 text-gray-300 text-lg rounded shadow-lg flex flex-col">
