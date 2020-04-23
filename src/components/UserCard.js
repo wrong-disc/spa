@@ -2,7 +2,6 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 import AuthService from '../services/AuthService';
 import UserService from '../services/UserService';
-import md5 from 'md5';
 
 export default class UserCardComponent extends React.Component {
 
@@ -16,22 +15,16 @@ export default class UserCardComponent extends React.Component {
     }
 
     componentDidMount() {
-        UserService.get()
-        .then(res => {
-            res.md5 = md5(res.email);
-            this.setState({
-                user: res,
-                userLoaded: true,
-            });
-        })
-        .catch(err => console.log('Error getting authenticated user: ' + err));
+        UserService
+        .get()
+        .then(user => this.setState({ user: user, userLoaded: true }))
+        .catch(err => console.log('Error getting authenticated user: ' + err.message));
     }
 
     logout = () => {
-        AuthService.logout()
-        .then(() => {
-            this.props.updateMe();
-        });
+        AuthService
+        .logout()
+        .then(this.props.updateMe);
     }
 
     render() {

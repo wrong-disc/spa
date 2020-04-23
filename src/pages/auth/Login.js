@@ -13,13 +13,14 @@ export default class LoginPage extends React.Component {
     }
 
     login = () => {
-        AuthService.login(prompt('email'), prompt('password'))
+        AuthService
+        .login(prompt('email'), prompt('password'))
         .then(() => this.setState({ redirect: true }))
         .catch(err => {
             this.setState({ redirect: false });
             alert(err.message);
         })
-        .finally(() => this.props.updateMe());
+        .finally(this.props.updateMe);
     }
 
     render () {

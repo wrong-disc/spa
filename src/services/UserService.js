@@ -1,10 +1,14 @@
 import { api } from '../util/helpers';
 import Axios from 'axios';
+import md5 from 'md5';
 
 const get = () => {
     return new Promise((resolve, reject) => {
         Axios.get(api('user'))
-        .then(res => resolve(res.data))
+        .then(res => {
+            res.data.md5 = md5(res.data.email);
+            resolve(res.data);
+        })
         .catch(err => reject(err.response.data));
     });
 };

@@ -1,8 +1,9 @@
-const api = (resource) => process.env.REACT_APP_API_URL + '/api/' + resource;
-
-const csrf = () => process.env.REACT_APP_API_URL + '/sanctum/csrf-cookie';
+const url = () => process.env.REACT_APP_API_URL;
+const api = (resource) => url() + '/api/' + resource;
+const csrf = () => url() + '/sanctum/csrf-cookie';
 
 export {
+    url,
     api,
     csrf,
 };
