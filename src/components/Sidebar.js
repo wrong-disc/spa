@@ -19,10 +19,10 @@ export default class SidebarComponent extends React.Component {
                 </div>
                 
                 <div className="mt-8 w-full text-gray-600">
-                    <NavLink exact={true} activeClassName="text-white" to="/">
-                        <div className="mx-4 border-b border-gray-700 py-2 font-bold text-lg" >My Music</div>
+                    <NavLink exact={true} activeClassName="text-gray-100" to="/">
+                        <div className="mx-4 border-b border-gray-700 py-2 font-bold text-lg">My Music</div>
                     </NavLink>
-                    <NavLink exact={true} activeClassName="text-white" to="/explore">
+                    <NavLink exact={true} activeClassName="text-gray-100" to="/explore">
                         <div className="mx-4 py-2 font-bold text-lg ">Explore</div>
                     </NavLink>
                 </div>
