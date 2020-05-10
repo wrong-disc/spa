@@ -8,18 +8,23 @@ export default class AlbumPage extends React.Component {
 
   constructor(props) {
     super(props);
-    let id = this.props.match.params.id;
 
     this.state = {
       album: null,
       loaded: false
     }
+  }
 
+  load() {
+    let id = this.props.match.params.id;
     AlbumService
     .get(id)
     .then(album => this.setState({album: album, loaded: true}))
     .catch(console.log);
   }
+  
+  componentDidMount = this.load;
+  componentDidUpdate = this.load;
 
   favourite(track) {
     TrackService

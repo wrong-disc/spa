@@ -33,7 +33,7 @@ export default class ExplorePage extends React.Component {
               <NavLink to={"/album/" + album.id}>
                 <img className="shadow-lg rounded-lg" alt="Album cover" src={album.cover} />
               </NavLink>
-              <h2 className="mt-2 text-gray-100 font-bold text-lg">{album.title}</h2>
+              <h2 className="mt-2 text-gray-100 font-bold text-lg truncate">{album.title}</h2>
               <NavLink to={"/artist/" + album.artist.id}>
                 <h3 className="text-gray-100 text-xs">{album.artist.name}</h3>
               </NavLink>

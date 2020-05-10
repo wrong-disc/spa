@@ -6,19 +6,24 @@ export default class ArtistPage extends React.Component {
 
   constructor(props) {
     super(props);
-    let id = this.props.match.params.id;
 
     this.state = {
       artist: null,
       loaded: false
     }
 
+  }
+
+  load() {
+    let id = this.props.match.params.id;
     ArtistService
     .get(id)
     .then(artist => this.setState({artist: artist, loaded: true}))
     .catch(console.log);
-
   }
+
+  componentDidMount = this.load;
+  componentDidUpdate = this.load;
 
   render() {
     let artist = this.state.artist;

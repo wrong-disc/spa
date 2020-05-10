@@ -66,7 +66,7 @@ export default class MyMusicPage extends React.Component {
                     }
                   </button>
                   <button className="text-gray-100 text-xl tracking-tight font-bold">
-                    <svg viewBox="0 0 448 512" className="w-16 h-16">
+                    <svg viewBox="0 0 448 512" className="w-10 h-10">
                       <path fill="currentColor" d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"/>
                     </svg>
                   </button>
@@ -77,7 +77,7 @@ export default class MyMusicPage extends React.Component {
                   </NavLink>
                 </div>
               </div>
-              <h2 className="mt-2 text-gray-100 font-bold text-lg">{track.title}</h2>
+              <h2 className="mt-2 text-gray-100 font-bold text-lg truncate">{track.title}</h2>
               <NavLink to={"/artist/" + track.artist.id}>
                 <h3 className="text-gray-100 text-xs">{track.artist.name}</h3>
               </NavLink>

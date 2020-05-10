@@ -17,6 +17,8 @@ import Settings from '../pages/settings/Settings';
 import Album from '../pages/music/Album';
 import Artist from '../pages/music/Artist';
 
+import "../assets/scrollbar.css";
+
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={(props) => (
     AuthState.loggedIn === true
@@ -45,7 +47,7 @@ export default class RouterComponent extends React.Component {
               <div className="flex flex-1 overflow-hidden">
                 { AuthState.loggedIn === true && <Sidebar/> }
 
-                <main className="flex-1 w-full overflow-y-auto">
+                <main className="flex-1 w-full overflow-y-auto pretty-scrollbar-thicc">
                   
                   <Switch>
 
