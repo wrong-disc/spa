@@ -1,5 +1,7 @@
 import React from 'react';
 import AlbumService from '../../services/AlbumService';
+import {NavLink} from 'react-router-dom';
+
 export default class ExplorePage extends React.Component {
 
   constructor(props) {
@@ -27,11 +29,11 @@ export default class ExplorePage extends React.Component {
 
           {this.state.loaded && this.state.albums.map(album => (
 
-            <div className="mx-4 my-4 w-1/6 flex flex-col items-center leading-tight" key={album.id}>
+            <NavLink to={"/album/" + album.id} className="mx-4 my-4 w-1/6 flex flex-col items-center leading-tight" key={album.id}>
               <img className="shadow-lg rounded-lg" alt="Album cover" src={album.cover} />
               <h2 className="mt-2 text-gray-100 font-bold text-lg">{album.title}</h2>
               <h3 className="text-gray-100 text-xs">{album.artist.name}</h3>
-            </div>
+            </NavLink>
 
           ))}
 

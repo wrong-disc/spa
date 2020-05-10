@@ -14,6 +14,7 @@ import MyMusic from '../pages/music/MyMusic';
 import Explore from '../pages/music/Explore';
 import About from '../pages/about/About';
 import Settings from '../pages/settings/Settings';
+import Album from '../pages/music/Album';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={(props) => (
@@ -58,6 +59,7 @@ export default class RouterComponent extends React.Component {
                       <PrivateRoute path="/explore" component={Explore}/>
                       <PrivateRoute path="/about" component={About}/>
                       <PrivateRoute path="/settings" component={Settings}/>
+                      <PrivateRoute path="/album/:id" component={Album}/>
 
                   </Switch>
 
