@@ -29,11 +29,15 @@ export default class ExplorePage extends React.Component {
 
           {this.state.loaded && this.state.albums.map(album => (
 
-            <NavLink to={"/album/" + album.id} className="mx-4 my-4 w-1/6 flex flex-col items-center leading-tight" key={album.id}>
-              <img className="shadow-lg rounded-lg" alt="Album cover" src={album.cover} />
+            <div className="mx-2 my-2 w-1/6 flex flex-col items-center leading-tight" key={album.id}>
+              <NavLink to={"/album/" + album.id}>
+                <img className="shadow-lg rounded-lg" alt="Album cover" src={album.cover} />
+              </NavLink>
               <h2 className="mt-2 text-gray-100 font-bold text-lg">{album.title}</h2>
-              <h3 className="text-gray-100 text-xs">{album.artist.name}</h3>
-            </NavLink>
+              <NavLink to={"/artist/" + album.artist.id}>
+                <h3 className="text-gray-100 text-xs">{album.artist.name}</h3>
+              </NavLink>
+            </div>
 
           ))}
 
