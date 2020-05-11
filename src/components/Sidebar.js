@@ -3,6 +3,7 @@ import {NavLink} from 'react-router-dom';
 
 import '../assets/scrollbar.css';
 import SearchService from '../services/SearchService';
+import StreamService from '../services/StreamService';
 
 export default class SidebarComponent extends React.Component {
 
@@ -34,6 +35,15 @@ export default class SidebarComponent extends React.Component {
 
     clearSearch() {
         this.setState({search: ""});
+    }
+
+    play(track) {
+        StreamService
+        .load(track)
+        .then(() => {
+            StreamService
+            .play();
+        })
     }
 
     render() {
@@ -86,7 +96,7 @@ export default class SidebarComponent extends React.Component {
                             <ul className="w-full mt-4">
                                 { this.state.loaded && this.state.results.tracks.map((track, k) => (
                                     <li className="flex items-center my-4">
-                                        <button className="relative group">
+                                        <button onClick={() => this.play(track)} className="relative group">
                                             <img className="shadow-lg rounded-lg h-16 w-16" alt="Album cover" src={track.album.cover} />
                                             <div className="invisible group-hover:visible absolute top-0 left-0 w-full h-full rounded-lg text-gray-300 flex items-center justify-center bg-black opacity-50">
                                                 <svg viewBox="0 0 448 512" className="w-8 h-8">

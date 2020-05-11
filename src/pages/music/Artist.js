@@ -8,6 +8,7 @@ export default class ArtistPage extends React.Component {
     super(props);
 
     this.state = {
+      id: null,
       artist: null,
       loaded: false
     }
@@ -16,10 +17,12 @@ export default class ArtistPage extends React.Component {
 
   load() {
     let id = this.props.match.params.id;
-    ArtistService
-    .get(id)
-    .then(artist => this.setState({artist: artist, loaded: true}))
-    .catch(console.log);
+    if(String(this.state.id) !== String(id)) {
+      ArtistService
+      .get(id)
+      .then(artist => this.setState({id: artist.id, artist: artist, loaded: true}))
+      .catch(console.log);
+    }
   }
 
   componentDidMount = this.load;

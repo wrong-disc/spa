@@ -7,9 +7,12 @@ const pad = (num, size) => {
     return s.substr(s.length-size);
 }
 
+const fmtMSS = s => ((s-(s%=60))/60+(9<s?':':':0')+s);
+
 export {
     url,
     api,
     csrf,
-    pad
+    pad,
+    fmtMSS
 };

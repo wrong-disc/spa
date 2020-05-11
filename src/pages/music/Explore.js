@@ -25,7 +25,7 @@ export default class ExplorePage extends React.Component {
 
         <h1 className="ml-4 text-4xl border-gray-800 border-b text-white font-bold tracking-tight">Explore</h1>
         
-        <div className="mt-8 flex items-center justify-between flex-wrap">
+        <div className="mt-8 flex items-center justify-between flex-wrap w-full">
 
           {this.state.loaded && this.state.albums.map(album => (
 

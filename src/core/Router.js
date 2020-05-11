@@ -76,6 +76,10 @@ export default class RouterComponent extends React.Component {
                 { AuthState.loggedIn === true && <UserCard updateMe={this.updateMe}/> }
               </div>
 
+              <audio id="audio-player" className="w-full">
+                <source src="#" type="audio/mpeg"/>
+              </audio>
+
             </div>
         }
       </Router>

@@ -1,6 +1,7 @@
 import React from 'react';
 import TrackService from '../../services/TrackService';
 import {NavLink} from 'react-router-dom';
+import StreamService from '../../services/StreamService';
 
 export default class MyMusicPage extends React.Component {
 
@@ -17,6 +18,15 @@ export default class MyMusicPage extends React.Component {
     .favouriteTracks()
     .then(tracks => this.setState({ tracks: tracks, loaded: true }))
     .catch(err => console.log);
+  }
+
+  play(track) {
+      StreamService
+      .load(track)
+      .then(() => {
+        StreamService
+        .play();
+      })
   }
 
   favourite(track) {
@@ -65,7 +75,7 @@ export default class MyMusicPage extends React.Component {
                       </svg>
                     }
                   </button>
-                  <button className="text-gray-100 text-xl tracking-tight font-bold">
+                  <button onClick={() => this.play(track)} className="text-gray-100 text-xl tracking-tight font-bold">
                     <svg viewBox="0 0 448 512" className="w-10 h-10">
                       <path fill="currentColor" d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"/>
                     </svg>
