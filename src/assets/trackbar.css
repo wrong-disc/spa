@@ -1,0 +1,13 @@
+input[type="range"].trackbar::-webkit-slider-thumb {
+    width: 12px;
+    -webkit-appearance: none;
+      appearance: none;
+    height: 12px;
+    cursor: ew-resize;
+    background: #FFF;
+    border-radius: 50%;
+}
+
+input[type="range"].trackbar {
+  background: transparent;
+}

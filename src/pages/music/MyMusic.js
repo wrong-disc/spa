@@ -49,6 +49,11 @@ export default class MyMusicPage extends React.Component {
     .catch(console.log);
   }
 
+  addToPlaylist(track) {
+    StreamService.addToPlaylist(track)
+    .then().catch();
+  }
+
   render() {
     return (
       <div className="w-full h-full flex flex-col items-start px-4 py-4">
@@ -63,7 +68,12 @@ export default class MyMusicPage extends React.Component {
               <div to={"/album/" + track.album.id} className="relative">
                 <img className="shadow-lg rounded-lg" alt="Album cover" src={track.album.cover} />
                 <div className="absolute bg-black w-full h-full top-0 left-0 rounded-lg opacity-75 invisible group-hover:visible flex flex-col justify-center items-center px-12">
-                <button className="absolute top-0 right-0 mt-4 mr-4 text-gray-100">
+                  <button className="text-5xl absolute top-0 left-0 mt-4 ml-4 text-gray-100 focus:outline-none hover:text-gray-400">
+                    <svg viewBox="0 0 24 24" className="w-6 h-6" onClick={() => this.addToPlaylist(track)}>
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M1.666 15.758l9.546-9.546a1.5 1.5 0 012.122 0l9.546 9.546a1.5 1.5 0 01-2.122 2.122l-8.485-8.486-8.485 8.486a1.5 1.5 0 11-2.122-2.122z" fill="currentColor"/>
+                    </svg>
+                  </button>
+                  <button className="absolute top-0 right-0 mt-4 mr-4 text-gray-100 focus:outline-none hover:text-gray-400">
                     { track.favourite &&
                       <svg viewBox="0 0 512 512" className="w-6 h-6" onClick={() => this.unfavourite(track)}>
                         <path fill="currentColor" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/>
@@ -75,7 +85,7 @@ export default class MyMusicPage extends React.Component {
                       </svg>
                     }
                   </button>
-                  <button onClick={() => this.play(track)} className="text-gray-100 text-xl tracking-tight font-bold">
+                  <button onClick={() => this.play(track)} className="text-gray-100 text-xl tracking-tight font-bold focus:outline-none hover:text-gray-400">
                     <svg viewBox="0 0 448 512" className="w-10 h-10">
                       <path fill="currentColor" d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"/>
                     </svg>

@@ -59,6 +59,11 @@ export default class AlbumPage extends React.Component {
     .catch(console.log);
   }
 
+  addToPlaylist(track) {
+    StreamService.addToPlaylist(track)
+    .then().catch();
+  }
+
   render() {
     let album = this.state.album;
 
@@ -94,7 +99,7 @@ export default class AlbumPage extends React.Component {
 
               return (
                 <li className="flex items-center w-full py-1 px-4 py-1">
-                  <div className="flex items-center w-1/4">
+                  <div className="flex items-center w-1/5">
                     <button onClick={() => this.play(track)}>
                       <svg className="w-12 h-12 text-gray-200 hover:text-gray-500 cursor-pointer" viewBox="0 0 56 56" fill="none">
                         <path d="M53 28c0 13.807-11.193 25-25 25S3 41.807 3 28 14.193 3 28 3s25 11.193 25 25z" fill="#212121"/>
@@ -103,11 +108,11 @@ export default class AlbumPage extends React.Component {
                     </button>
                     <p className="ml-4 text-gray-100 text-xl tracking-tight font-bold">{track.title}</p>
                   </div>
-                  <NavLink to={"/artist/" + track.artist.id} className="w-1/4">
+                  <NavLink to={"/artist/" + track.artist.id} className="w-1/5">
                     <p className="text-gray-100 text-xl tracking-tight font-bold">{track.artist.name}</p>
                   </NavLink>
-                  <p className="text-gray-100 text-xl tracking-tight font-bold w-1/4">{duration}</p>
-                  <p className="text-gray-100 text-xl tracking-tight font-bold w-1/4">
+                  <p className="text-gray-100 text-xl tracking-tight font-bold w-1/5">{duration}</p>
+                  <p className="text-gray-100 text-xl tracking-tight font-bold w-1/5">
                     { track.favourite &&
                       <button onClick={() => this.unfavourite(track)}>
                         <svg viewBox="0 0 512 512" className="w-8 h-8">
@@ -122,6 +127,11 @@ export default class AlbumPage extends React.Component {
                         </svg>
                       </button>
                     }
+                  </p>
+                  <p className="text-gray-100 text-5xl tracking-tight font-bold w-1/5">
+                    <button onClick={() => this.addToPlaylist(track)} className="focus:outline-none">
+                      +
+                    </button>
                   </p>
                 </li>
               );
