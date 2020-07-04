@@ -9,6 +9,24 @@ const get = (id) => {
     });
 };
 
+const all = () => {
+    return new Promise((resolve, reject) => {
+        Axios.get(api('artists'))
+        .then(res => resolve(res.data))
+        .catch(err => reject(err.response.data));
+    });
+};
+
+const destroy = (id) => {
+    return new Promise((resolve, reject) => {
+        Axios.delete(api('artists/' + id))
+        .then(res => resolve(res.data))
+        .catch(err => reject(err.response.data));
+    });
+};
+
 export default {
-    get
+    get,
+    all,
+    destroy
 }

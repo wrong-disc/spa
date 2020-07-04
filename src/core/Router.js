@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
-
+import "../assets/scrollbar.css";
 import AuthService from '../services/AuthService';
 import AuthState from '../services/AuthState';
 
@@ -16,8 +16,10 @@ import About from '../pages/about/About';
 import Settings from '../pages/settings/Settings';
 import Album from '../pages/music/Album';
 import Artist from '../pages/music/Artist';
-
-import "../assets/scrollbar.css";
+import ListArtists from '../pages/editor-panel/artists/ListArtists';
+import AddAlbum from '../pages/editor-panel/albums/AddAlbum';
+import AddTrack from '../pages/editor-panel/tracks/AddTrack';
+import AddArtist from '../pages/editor-panel/artists/AddArtist';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={(props) => (
@@ -64,6 +66,13 @@ export default class RouterComponent extends React.Component {
                       <PrivateRoute path="/settings" component={Settings}/>
                       <PrivateRoute path="/album/:id" component={Album}/>
                       <PrivateRoute path="/artist/:id" component={Artist}/>
+                      <PrivateRoute path="/editor/artist/add" component={AddArtist}/>   
+                      <PrivateRoute path="/editor/artist" component={ListArtists}/>
+                      <PrivateRoute path="/editor/album/add" component={AddAlbum}/>   
+                      <PrivateRoute path="/editor/track/add" component={AddTrack}/>   
+  
+
+                                 
 
                   </Switch>
 

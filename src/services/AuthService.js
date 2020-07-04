@@ -16,7 +16,8 @@ const updateAuthState = () => {
 
 const login = (email, password) => {
     return new Promise((resolve, reject) => {
-        Axios.get(csrf()).then(() => {
+        Axios.get(csrf()).then((response) => {
+            console.log(response)
             Axios.post(api('login'), {
                 email: email,
                 password: password,
@@ -58,9 +59,17 @@ const register = (name, email, password) => {
     });
 };
 
+const getToken = () => {
+    return new Promise((resolve, reject) => {
+        Axios.get(api('auth/token'))
+        .then((response) => resolve(response.data));
+    });
+};
+
 export default {
     updateAuthState,
     login,
     logout,
     register,
+    getToken
 }
