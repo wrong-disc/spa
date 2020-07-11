@@ -1,8 +1,5 @@
 import React from 'react';
 import ArtistService from '../../../services/ArtistService';
-import Dropzone from "dropzone";
-import { api } from '../../../util/helpers';
-import AuthService from '../../../services/AuthService';
 
 export default class AddArtistPage extends React.Component {
 
@@ -10,48 +7,24 @@ export default class AddArtistPage extends React.Component {
     super(props);
 
     this.state = {
-      artist: {},
-      dropzone : null
+      name: "",
     }
   }
 
-  componentDidMount(){
-    AuthService.getToken().then((token) => {
-      this.setState({
-        dropzone:new Dropzone("div#upload-photo", this.settings(token))
-      });    
-    });
+  handleName = (event) => {
+      this.setState ({
+          name: event.target.value,
+      });
   }
 
-  settings(token){
-    return {
-      paramName: "photo",
-      url: api('artists'),
-      acceptedFiles: "image/*",
-      params: {name:this.state.artist.name},
-      headers: {
-        "X-XSRF-TOKEN": this.getCookie("X-XSRF-TOKEN")
-      },
-      success: (e, res) => {}
-    };
+  save = () => {
+    ArtistService
+    .create({
+      name: this.state.name,
+    })
+    .then(() => this.props.history.push("/editor/artist"))
+    .catch(console.log);
   }
-
-   getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
-  }
-  
 
   render() {
 
@@ -59,16 +32,12 @@ export default class AddArtistPage extends React.Component {
       <div className="w-full h-full flex flex-col items-start px-8 py-4">
         <h1 className="text-4xl border-gray-800 border-b text-white font-bold tracking-tight">Add Artist</h1>
         <div className="flex flex-col mt-2 ">
-          <input type="text" placeholder="Artist Name" className="mt-4 py-2 px-4 rounded-full focus:outline-none shadow focus:bg-gray-300" />
+          <input type="text" placeholder="Artist Name" className="mt-4 py-2 px-4 rounded-full focus:outline-none shadow focus:bg-gray-300" onChange={this.handleName}/>
         </div>
-        <div id="upload-photo">
-          <div className="flex items-center justify-center cursor-pointer">
-            upload photo
-          </div>
-        </div>
+        <button className="mt-4 bg-gray-800 text-gray-200 py-2 px-8 rounded-full font-bold text-lg shadow focus:outline-none hover:bg-gray-900 active:bg-gray-700" onClick={this.save}>
+          Create
+        </button>
       </div>
-
-
     );
   }
 

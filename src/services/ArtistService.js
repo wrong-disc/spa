@@ -17,6 +17,14 @@ const all = () => {
     });
 };
 
+const create = (artist) => {
+    return new Promise((resolve, reject) => {
+        Axios.post(api('artists'), artist)
+        .then(res => resolve(res.data))
+        .catch(err => reject(err.response.data));
+    });
+};
+
 const destroy = (id) => {
     return new Promise((resolve, reject) => {
         Axios.delete(api('artists/' + id))
@@ -28,5 +36,6 @@ const destroy = (id) => {
 export default {
     get,
     all,
-    destroy
+    destroy,
+    create,
 }

@@ -14,7 +14,7 @@ export default class ExplorePage extends React.Component {
 
   componentDidMount() {
     AlbumService
-    .all()
+    .explore()
     .then(albums => this.setState({ albums: albums, loaded: true }))
     .catch(err => console.log);
   }
