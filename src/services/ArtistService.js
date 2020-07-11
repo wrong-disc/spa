@@ -25,6 +25,14 @@ const create = (artist) => {
     });
 };
 
+const update = (id, artist) => {
+    return new Promise((resolve, reject) => {
+        Axios.put(api('artists/' + id), artist)
+        .then(res => resolve(res.data))
+        .catch(err => reject(err.response.data));
+    });
+};
+
 const destroy = (id) => {
     return new Promise((resolve, reject) => {
         Axios.delete(api('artists/' + id))
@@ -38,4 +46,5 @@ export default {
     all,
     destroy,
     create,
+    update,
 }

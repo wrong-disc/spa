@@ -41,10 +41,19 @@ const create = (album) => {
     });
 };
 
+const update = (id, album) => {
+    return new Promise((resolve, reject) => {
+        Axios.put(api('albums/'+ id), album)
+        .then(res => resolve(res.data))
+        .catch(err => reject(err.response.data));
+    });
+};
+
 export default {
     all, 
     get,
     explore,
     destroy,
     create,
+    update,
 }

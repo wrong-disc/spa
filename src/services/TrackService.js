@@ -49,6 +49,22 @@ const create = (track) => {
     });
 };
 
+const update = (id, track) => {
+    return new Promise((resolve, reject) => {
+        Axios.put(api('tracks/' + id), track)
+        .then(res => resolve(res.data))
+        .catch(err => reject(err.response.data));
+    });
+};
+
+const get = (id) => {
+    return new Promise((resolve, reject) => {
+        Axios.get(api('tracks/' + id))
+        .then(res => resolve(res.data))
+        .catch(err => reject(err.response.data));
+    });
+};
+
 export default {
     favouriteTracks,
     favourite,
@@ -56,4 +72,6 @@ export default {
     all,
     destroy,
     create,
+    update,
+    get,
 }

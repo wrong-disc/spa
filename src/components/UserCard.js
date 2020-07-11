@@ -42,7 +42,10 @@ export default class UserCardComponent extends React.Component {
                     </button>
                     { this.state.open &&
                         <div className="z-50 mt-2 p-4 w-64 bg-gray-900 text-gray-300 text-lg rounded shadow-lg flex flex-col">
-                            <NavLink to="/settings" onClick={() => { this.setState({ open: false }) }} className="py-2 px-2 w-full text-left hover:bg-gray-800 focus:outline-none rounded">Settings</NavLink>
+                            <p className="text-xs tracking-tight text-gray-700 uppercase font-bold">Editor Panel</p>
+                            <NavLink to="/editor/artist" onClick={() => { this.setState({ open: false }) }} className="py-2 px-2 w-full text-left hover:bg-gray-800 focus:outline-none rounded">Edit Artists</NavLink>
+                            <NavLink to="/editor/album" onClick={() => { this.setState({ open: false }) }} className="py-2 px-2 w-full text-left hover:bg-gray-800 focus:outline-none rounded">Edit Albums</NavLink>
+                            <NavLink to="/editor/track" onClick={() => { this.setState({ open: false }) }} className="py-2 px-2 w-full text-left hover:bg-gray-800 focus:outline-none rounded">Edit Tracks</NavLink>
                             <button onClick={this.logout} className="py-2 px-2 border-gray-800 border-t w-full text-left hover:bg-gray-800 focus:outline-none rounded">Logout</button>
                         </div>
                     }
