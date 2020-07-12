@@ -1,6 +1,7 @@
 import React from 'react';
 import AlbumService from '../../services/AlbumService';
 import {NavLink} from 'react-router-dom';
+import { url } from '../../util/helpers';
 
 export default class ExplorePage extends React.Component {
 
@@ -31,7 +32,7 @@ export default class ExplorePage extends React.Component {
 
             <div className="mx-2 my-2 w-1/6 flex flex-col items-center leading-tight" key={album.id}>
               <NavLink to={"/album/" + album.id}>
-                <img className="shadow-lg rounded-lg" alt="Album cover" src={album.cover} />
+                <img className="shadow-lg rounded-lg" alt="Album cover" src={url() + "/" + album.cover} />
               </NavLink>
               <h2 className="mt-2 text-gray-100 font-bold text-lg truncate">{album.title}</h2>
               <NavLink to={"/artist/" + album.artist.id}>

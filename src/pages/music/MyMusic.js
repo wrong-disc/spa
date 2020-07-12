@@ -2,6 +2,7 @@ import React from 'react';
 import TrackService from '../../services/TrackService';
 import {NavLink} from 'react-router-dom';
 import StreamService from '../../services/StreamService';
+import { url } from '../../util/helpers';
 
 export default class MyMusicPage extends React.Component {
 
@@ -66,7 +67,7 @@ export default class MyMusicPage extends React.Component {
 
             <div className="mx-2 my-2 w-1/6 flex flex-col items-center leading-tight group" key={track.id}>
               <div to={"/album/" + track.album.id} className="relative">
-                <img className="shadow-lg rounded-lg" alt="Album cover" src={track.album.cover} />
+                <img className="shadow-lg rounded-lg" alt="Album cover" src={url() + "/" + track.album.cover} />
                 <div className="absolute bg-black w-full h-full top-0 left-0 rounded-lg opacity-75 invisible group-hover:visible flex flex-col justify-center items-center px-12">
                   <button className="text-5xl absolute top-0 left-0 mt-4 ml-4 text-gray-100 focus:outline-none hover:text-gray-400">
                     <svg viewBox="0 0 24 24" className="w-6 h-6" onClick={() => this.addToPlaylist(track)}>

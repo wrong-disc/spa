@@ -1,6 +1,6 @@
 import React from 'react';
 import StreamService from '../services/StreamService';
-import { fmtMSS } from '../util/helpers';
+import { fmtMSS, url } from '../util/helpers';
 import '../assets/scrollbar.css';
 import '../assets/trackbar.css';
 
@@ -147,7 +147,7 @@ export default class PlaybarComponent extends React.Component {
                 { this.state.track && 
                     <div className="flex items-center">
                         <div className="w-40">
-                            <img className="absolute h-32 -mt-24 rounded-lg" alt="Album cover" src={this.state.track.album.cover}/>
+                            <img className="absolute h-32 -mt-24 rounded-lg" alt="Album cover" src={url() + "/" + this.state.track.album.cover}/>
                         </div>
                         <div className="ml-3 pb-2 leading-tight">
                             <h3 className="font-medium text-md">{this.state.track.artist.name}</h3>
@@ -227,7 +227,7 @@ export default class PlaybarComponent extends React.Component {
                                             </div>
                                         }
                                         <button onClick={this.state.playlistEditMode ? () => this.deleteIndex(k) : () => this.playIndex(k)} className="relative group focus:outline-none">
-                                            <img className={`shadow-lg rounded-lg h-16 w-16 shadow ${k === StreamService.getIndex() ? 'border-gray-300' : 'border-gray-800'} ${this.state.playlistEditMode ? 'border-red-500 border-2' : 'border-4'}`} alt="Album cover" src={track.album.cover} />
+                                            <img className={`rounded-lg h-16 w-16 shadow ${k === StreamService.getIndex() ? 'border-gray-300' : 'border-gray-800'} ${this.state.playlistEditMode ? 'border-red-500 border-2' : 'border-4'}`} alt="Album cover" src={url() + "/" + track.album.cover} />
                                             { !this.state.playlistEditMode &&
                                                 <div className="invisible group-hover:visible absolute top-0 left-0 w-full h-full rounded-lg text-gray-300 flex items-center justify-center bg-black opacity-50">
                                                     <svg viewBox="0 0 448 512" className="w-8 h-8">

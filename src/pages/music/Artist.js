@@ -1,6 +1,7 @@
 import React from 'react';
 import ArtistService from '../../services/ArtistService';
 import {NavLink} from 'react-router-dom';
+import { url } from '../../util/helpers';
 
 export default class ArtistPage extends React.Component {
 
@@ -36,7 +37,7 @@ export default class ArtistPage extends React.Component {
         { this.state.loaded && <>
 
         <div className="flex mt-2 items-center">
-          <img className="mt-2 shadow-lg rounded-full h-24 w-24" alt="Artist" src={artist.photo} />
+          <img className="mt-2 shadow-lg rounded-full h-24 w-24" alt="Artist" src={url() + "/" + artist.photo} />
           <h1 className="ml-6 text-4xl border-gray-800 border-b text-white font-bold tracking-tight">{artist.name}</h1>
         </div>
 
@@ -52,7 +53,7 @@ export default class ArtistPage extends React.Component {
 
               <div className="mx-2 my-2 w-1/6 flex flex-col items-center leading-tight" key={album.id}>
                 <NavLink to={"/album/" + album.id}>
-                  <img className="shadow-lg rounded-lg" alt="Album cover" src={album.cover} />
+                  <img className="shadow-lg rounded-lg" alt="Album cover" src={url() + "/" + album.cover} />
                 </NavLink>
                 <h2 className="mt-2 text-gray-100 font-bold text-lg">{album.title}</h2>
                 <NavLink to={"/artist/" + album.artist.id}>

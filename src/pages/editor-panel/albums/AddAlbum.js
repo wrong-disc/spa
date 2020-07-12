@@ -12,6 +12,7 @@ export default class AddAlbumPage extends React.Component {
       artist_id: null,
       artists: [],
       loaded: false,
+      cover: null,
     }
   }
 
@@ -32,13 +33,20 @@ export default class AddAlbumPage extends React.Component {
     this.setState ({
         artist_id: event.target.value,
     });
-}
+  }
+
+  handleCover = (event) => {
+    this.setState({
+      cover: event.target.files[0],
+    });
+  }
 
   save = () => {
     AlbumService
     .create({
       title: this.state.title,
       artist_id: this.state.artist_id,
+      cover: this.state.cover,
     })
     .then(() => this.props.history.push("/editor/album"))
     .catch(console.log);
@@ -51,9 +59,14 @@ export default class AddAlbumPage extends React.Component {
         <h1 className="text-4xl border-gray-800 border-b text-white font-bold tracking-tight">Add Album</h1>
         {this.state.loaded && <>
           <div className="flex flex-col mt-2 ">
-            <input type="text" placeholder="Album Title" className="mt-4 py-2 px-4 rounded-full focus:outline-none shadow focus:bg-gray-300" onChange={this.handleTitle}/>
+            <p className="mt-2 ml-4 text-gray-400 tracking-tight uppercase font-bold text-sm">Cover</p>
+            <input type="file" className="mt-1 py-2 px-4 rounded-full focus:outline-none shadow bg-gray-300" onChange={this.handleCover}/>
+
+            <p className="mt-2 ml-4 text-gray-400 tracking-tight uppercase font-bold text-sm">Title</p>
+            <input type="text" placeholder="Album Title" className="mt-1 py-2 px-4 rounded-full focus:outline-none shadow focus:bg-gray-300" onChange={this.handleTitle}/>
             
-            <select className="mt-4 py-2 px-4 rounded-full focus:outline-none shadow focus:bg-gray-300" onChange={this.handleArtist}>
+            <p className="mt-2 ml-4 text-gray-400 tracking-tight uppercase font-bold text-sm">Artist</p>
+            <select className="mt-1 py-2 px-4 rounded-full focus:outline-none shadow focus:bg-gray-300" onChange={this.handleArtist}>
               <option value="" selected>Choose Artist</option>
               {this.state.artists.map(artist => <option value={artist.id}>{artist.name}</option>)}
             </select>

@@ -1,5 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
+import { url } from '../util/helpers';
 
 import '../assets/scrollbar.css';
 import SearchService from '../services/SearchService';
@@ -97,7 +98,7 @@ export default class SidebarComponent extends React.Component {
                                 { this.state.loaded && this.state.results.tracks.map((track, k) => (
                                     <li className="flex items-center my-4">
                                         <button onClick={() => this.play(track)} className="relative group focus:outline-none">
-                                            <img className="shadow-lg rounded-lg h-16 w-16" alt="Album cover" src={track.album.cover} />
+                                            <img className="shadow-lg rounded-lg h-16 w-16" alt="Album cover" src={url() + "/" + track.album.cover} />
                                             <div className="invisible group-hover:visible absolute top-0 left-0 w-full h-full rounded-lg text-gray-300 flex items-center justify-center bg-black opacity-50">
                                                 <svg viewBox="0 0 448 512" className="w-8 h-8">
                                                     <path fill="currentColor" d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"/>
@@ -126,7 +127,7 @@ export default class SidebarComponent extends React.Component {
                                     { this.state.loaded && this.state.results.albums.map((album, k) => (
                                         <li key={"search-album-" + album.id}>
                                             <NavLink exact={true} className="flex items-center my-4" to={"/album/" + album.id}>
-                                                <img className="shadow-lg rounded-lg h-16 w-16" alt="Album cover" src={album.cover} />
+                                                <img className="shadow-lg rounded-lg h-16 w-16" alt="Album cover" src={url() + "/" + album.cover} />
                                                 <div className="ml-4">
                                                     <p className="font-bold text-lg">{album.title}</p>
                                                     <NavLink to={"/artist/" + album.artist.id}>
@@ -147,7 +148,7 @@ export default class SidebarComponent extends React.Component {
                                     { this.state.loaded && this.state.results.artists.map((artist, k) => (
                                         <li key={"search-artist-" + artist.id}>
                                             <NavLink exact={true} className="flex items-center my-2" to={"/artist/" + artist.id}>
-                                                <img className="shadow-lg rounded-full h-16 w-16" alt="Album cover" src={artist.photo} />
+                                                <img className="shadow-lg rounded-full h-16 w-16" alt="Album cover" src={url() + "/" + artist.photo} />
                                                 <div className="ml-4">
                                                     <p className="font-bold text-lg">{artist.name}</p>
                                                 </div>

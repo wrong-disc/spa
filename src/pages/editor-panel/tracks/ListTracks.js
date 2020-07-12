@@ -1,6 +1,7 @@
 import React from 'react';
 import TrackService from '../../../services/TrackService';
 import {NavLink} from 'react-router-dom';
+import { url } from '../../../util/helpers';
 
 export default class ListTracksPage extends React.Component {
 
@@ -48,9 +49,9 @@ export default class ListTracksPage extends React.Component {
           <ul className="mt-4 mb-8 w-full flex flex-col items-start justify-start">
 
             { tracks.map(track => (
-              <li className="flex items-center w-full py-1 px-4 py-1">
+              <li className="flex items-center w-full px-4 py-1">
                 <div className="flex items-center w-1/4">
-                  <img src={track.album.cover} className= "rounded-lg h-10 w-10"/>
+                  <img src={url() + "/" + track.album.cover} alt="Album cover" className= "rounded-lg h-10 w-10"/>
                   <p className="ml-4 text-gray-100 text-xl tracking-tight font-bold">{track.title}</p>
                 </div>
                 <div className="flex items-center w-1/4">

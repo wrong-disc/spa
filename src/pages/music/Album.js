@@ -4,6 +4,7 @@ import {NavLink} from 'react-router-dom';
 import { pad } from '../../util/helpers';
 import TrackService from '../../services/TrackService';
 import StreamService from '../../services/StreamService';
+import { url } from '../../util/helpers';
 
 export default class AlbumPage extends React.Component {
 
@@ -72,11 +73,11 @@ export default class AlbumPage extends React.Component {
         { this.state.loaded && <>
 
         <div className="flex mt-4 items-start">
-          <img className="shadow-lg rounded-lg h-64 w-64" alt="Album cover" src={album.cover} />
+          <img className="shadow-lg rounded-lg h-64 w-64" alt="Album cover" src={url() + "/" + album.cover} />
           <div className="ml-6">
             <h1 className="text-4xl border-gray-800 border-b text-white font-bold tracking-tight">{album.title}</h1>
             <NavLink to={"/artist/" + album.artist.id} className="flex items-center">
-              <img className="mt-4 shadow-lg rounded-full h-16 w-16" alt="Album cover" src={album.artist.photo} />
+              <img className="mt-4 shadow-lg rounded-full h-16 w-16" alt="Album artist" src={url() + "/" + album.artist.photo} />
               <div className="mt-4">
                 <p className="ml-4 text-gray-200 tracking-tight leading-tight">Album by</p>
                 <p className="ml-4 text-xl font-bold text-gray-200 tracking-tight leading-tight">{album.artist.name}</p>
@@ -98,7 +99,7 @@ export default class AlbumPage extends React.Component {
               let duration = pad(durationDate.getMinutes(), 2) + ":" + pad(durationDate.getSeconds(), 2);
 
               return (
-                <li className="flex items-center w-full py-1 px-4 py-1">
+                <li className="flex items-center w-full px-4 py-1">
                   <div className="flex items-center w-1/5">
                     <button onClick={() => this.play(track)}>
                       <svg className="w-12 h-12 text-gray-200 hover:text-gray-500 cursor-pointer" viewBox="0 0 56 56" fill="none">

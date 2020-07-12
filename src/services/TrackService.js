@@ -43,7 +43,13 @@ const destroy = (id) => {
 
 const create = (track) => {
     return new Promise((resolve, reject) => {
-        Axios.post(api('tracks'), track)
+        let formData = new FormData();
+        for (let key in track) {
+            formData.append(key, track[key]);
+        }
+        Axios.post(api('tracks'), formData, { headers: {
+            'Content-Type': 'multipart/form-data'
+        }})
         .then(res => resolve(res.data))
         .catch(err => reject(err.response.data));
     });
@@ -51,7 +57,14 @@ const create = (track) => {
 
 const update = (id, track) => {
     return new Promise((resolve, reject) => {
-        Axios.put(api('tracks/' + id), track)
+        let formData = new FormData();
+        for (let key in track) {
+            formData.append(key, track[key]);
+        }
+        formData.append("_method", "PUT");
+        Axios.post(api('tracks/' + id), formData, { headers: {
+            'Content-Type': 'multipart/form-data'
+        }})
         .then(res => resolve(res.data))
         .catch(err => reject(err.response.data));
     });

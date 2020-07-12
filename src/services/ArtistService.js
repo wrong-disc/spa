@@ -19,7 +19,13 @@ const all = () => {
 
 const create = (artist) => {
     return new Promise((resolve, reject) => {
-        Axios.post(api('artists'), artist)
+        let formData = new FormData();
+        for (let key in artist) {
+            formData.append(key, artist[key]);
+        }
+        Axios.post(api('artists'), formData, { headers: {
+            'Content-Type': 'multipart/form-data'
+        }})
         .then(res => resolve(res.data))
         .catch(err => reject(err.response.data));
     });
@@ -27,7 +33,14 @@ const create = (artist) => {
 
 const update = (id, artist) => {
     return new Promise((resolve, reject) => {
-        Axios.put(api('artists/' + id), artist)
+        let formData = new FormData();
+        for (let key in artist) {
+            formData.append(key, artist[key]);
+        }
+        formData.append("_method", "PUT");
+        Axios.post(api('artists/' + id), formData, { headers: {
+            'Content-Type': 'multipart/form-data'
+        }})
         .then(res => resolve(res.data))
         .catch(err => reject(err.response.data));
     });
