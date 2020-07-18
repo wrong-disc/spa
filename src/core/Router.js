@@ -25,6 +25,8 @@ import ListTracks from '../pages/editor-panel/tracks/ListTracks';
 import EditArtist from '../pages/editor-panel/artists/EditArtist';
 import EditAlbum from '../pages/editor-panel/albums/EditAlbum';
 import EditTrack from '../pages/editor-panel/tracks/EditTrack';
+import EditUser from '../pages/admin-panel/users/EditUser';
+import ListUsers from '../pages/admin-panel/users/ListUsers';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={(props) => (
@@ -79,7 +81,9 @@ export default class RouterComponent extends React.Component {
                       <PrivateRoute path="/editor/album" component={ListAlbums}/>   
                       <PrivateRoute path="/editor/track/add" component={AddTrack}/>
                       <PrivateRoute path="/editor/track/edit/:id" component={EditTrack}/>   
-                      <PrivateRoute path="/editor/track" component={ListTracks}/>   
+                      <PrivateRoute path="/editor/track" component={ListTracks}/>
+                      <PrivateRoute path="/admin/user/edit/:id" component={EditUser}/>   
+                      <PrivateRoute path="/admin/user" component={ListUsers}/>   
 
                   </Switch>
 
